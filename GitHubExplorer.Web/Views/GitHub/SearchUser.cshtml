@@ -12,6 +12,9 @@
         @using (Html.BeginForm("SearchUser", "GitHub"))
         {
             @Html.TextBoxFor(x => x.UserName)
+            <div>
+                @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+            </div>
             <button class="btn btn-default">Search!</button>
         }
     </div>
@@ -19,14 +22,14 @@
 
 @if (!string.IsNullOrEmpty(Model.AvatarUrl))
 {
-    <hr/>
+    <hr />
     <div class="row">
         <div class="col-md-4">
             <h1>
                 @Model.UserName
             </h1>
             <p>
-                <img src="@Model.AvatarUrl" alt="@Model.UserName"/>
+                <img src="@Model.AvatarUrl" alt="@Model.UserName" />
             </p>
 
             <p>@Model.Location</p>
