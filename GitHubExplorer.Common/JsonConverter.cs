@@ -5,6 +5,7 @@ namespace GitHubExplorer.Common
 {
     public class JsonConverter : IConverter
     {
+        
         public T DeserializeObject<T>(string input)
         {
             return JsonConvert.DeserializeObject<T>(input);
