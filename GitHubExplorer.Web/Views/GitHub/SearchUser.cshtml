@@ -1,12 +1,9 @@
 ﻿@model GitHubExplorer.Web.Models.GitHubProfileModel
-
 @{
     ViewBag.Title = "Search User";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <h2>Search User</h2>
-
 <div class="row">
     <div class="col-md-4">
         @using (Html.BeginForm("SearchUser", "GitHub"))
@@ -15,11 +12,12 @@
             <div>
                 @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
             </div>
-            <button class="btn btn-default">Search!</button>
+            <div>
+                <button class="btn btn-default">Search!</button>
+            </div>
         }
     </div>
 </div>
-
 @if (!string.IsNullOrEmpty(Model.AvatarUrl))
 {
     <hr />
@@ -31,9 +29,7 @@
             <p>
                 <img src="@Model.AvatarUrl" alt="@Model.UserName" />
             </p>
-
             <p>@Model.Location</p>
-
             <h3>Top 5 repositories</h3>
             <ul>
                 @foreach (var repo in Model.GitHubRepositories)
