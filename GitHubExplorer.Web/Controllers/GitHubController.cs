@@ -7,7 +7,7 @@ namespace GitHubExplorer.Web.Controllers
 {
     public class GitHubController : Controller
     {
-        private readonly IVcsService<GitHubUser, GitHubRepository> _ivcsService;
+        public readonly IVcsService<GitHubUser, GitHubRepository> _ivcsService;
 
         public GitHubController(IVcsService<GitHubUser, GitHubRepository> ivcsService)
         {

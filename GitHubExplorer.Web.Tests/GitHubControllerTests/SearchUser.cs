@@ -48,6 +48,8 @@ namespace GitHubExplorer.Web.Tests.GitHubControllerTests
             var result = _gitHubController.SearchUser(new GitHubProfileModel()) as ViewResult;
 
             // Assert
+            _mockVcsService.Verify(x=>x.GetUser(It.IsAny<string>()), Times.Once);
+
             result.Model.As<GitHubProfileModel>().UserName.Should().Be(actualResult.UserName);
             result.Model.As<GitHubProfileModel>().AvatarUrl.Should().Be(actualResult.AvatarUrl);
             result.Model.As<GitHubProfileModel>().Location.Should().Be(actualResult.Location);
