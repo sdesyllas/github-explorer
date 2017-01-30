@@ -23,19 +23,6 @@ namespace GitHubExplorer.Web.Tests.GitHubControllerTests
             _gitHubController = new GitHubController(_mockVcsService.Object);
         }
 
-        [Test]
-        public void Controller_Calls_SearchUser_From_Service()
-        {
-            // Arrange
-            var model = Builder<GitHubProfileModel>.CreateNew().Build();
-            _mockVcsService.Setup(x => x.GetUser(model.UserName)).Returns(new GitHubUser()).Verifiable();
-
-            // Assign
-            _gitHubController.SearchUser(model);
-
-            // Assert
-            _mockVcsService.Verify();
-        }
 
         [Test]
         public void ReturnsResult_To_View()
