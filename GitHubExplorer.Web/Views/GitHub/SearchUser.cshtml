@@ -9,11 +9,11 @@
         @using (Html.BeginForm("SearchUser", "GitHub"))
         {
             @Html.TextBoxFor(x => x.UserName)
+            <span class="input-group-btn">
+                <button class="btn btn-default">Search Github!</button>
+            </span>
             <div>
                 @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
-            </div>
-            <div>
-                <button class="btn btn-default">Search!</button>
             </div>
         }
     </div>

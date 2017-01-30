@@ -41,19 +41,23 @@ namespace GitHubExplorer.Web.Tests.GitHubControllerTests
         public void ReturnsResult_To_View()
         {
             // Arrange
-            GitHubUser actualResult = new GitHubUser();
+            GitHubUser actualResult = Builder<GitHubUser>.CreateNew()
+                .With(x => x.GitHubRepositories = Builder<GitHubRepository>.CreateListOfSize(100).Build()).Build();
             _mockVcsService.Setup(x => x.GetUser(It.IsAny<string>())).Returns(actualResult);
 
             // Assign
-            var result = _gitHubController.SearchUser(new GitHubProfileModel()) as ViewResult;
-
+            var result =
+                _gitHubController.SearchUser(new GitHubProfileModel {UserName = actualResult.UserName}) as ViewResult;
+            
             // Assert
             _mockVcsService.Verify(x=>x.GetUser(It.IsAny<string>()), Times.Once);
+            var model = result?.Model as GitHubProfileModel;
 
-            result.Model.As<GitHubProfileModel>().UserName.Should().Be(actualResult.UserName);
-            result.Model.As<GitHubProfileModel>().AvatarUrl.Should().Be(actualResult.AvatarUrl);
-            result.Model.As<GitHubProfileModel>().Location.Should().Be(actualResult.Location);
-            result.Model.As<GitHubProfileModel>().GitHubRepositories.ShouldAllBeEquivalentTo(actualResult.GitHubRepositories);
+            if (model == null) return;
+            model.UserName.Should().Be(actualResult.UserName);
+            model.AvatarUrl.Should().Be(actualResult.AvatarUrl);
+            model.Location.Should().Be(actualResult.Location);
+            model.GitHubRepositories.ShouldAllBeEquivalentTo(actualResult.GitHubRepositories);
         }
     }
 }
