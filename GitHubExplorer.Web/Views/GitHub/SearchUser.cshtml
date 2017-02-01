@@ -8,8 +8,10 @@
     <div class="col-md-4">
         @using (Html.BeginForm("SearchUser", "GitHub"))
         {
-            @Html.TextBoxFor(x => x.UserName)
-            <span class="input-group-btn">
+            <div class="form-group">
+                @Html.TextBoxFor(x => x.UserName)      
+            </div>
+            <span class="form-group">
                 <button class="btn btn-default">Search!</button>
             </span>
             <div>
@@ -34,7 +36,7 @@
             <ul>
                 @foreach (var repo in Model.GitHubRepositories)
                 {
-                    <li><a target="_blank" href="@repo.RepositoryUrl ">@repo.RepositoryName (stars : @repo.StarCount)</a></li>
+                    <li><a target="_blank" href="@repo.RepositoryUrl">@repo.RepositoryName (stars : @repo.StarCount)</a></li>
                 }
             </ul>
         </div>
