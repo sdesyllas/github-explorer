@@ -24,7 +24,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Spyros Desyllas, ver.@ViewContext.Controller.GetType().Assembly.GetName().Version</p>
+            <p>&copy; @DateTime.Now.Year - Spyros Desyllas, ver.@ViewContext.Controller.GetType().Assembly.GetName().Version.ToString(3)</p>
         </footer>
     </div>
 
