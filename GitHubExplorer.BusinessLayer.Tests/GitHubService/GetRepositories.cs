@@ -52,6 +52,8 @@ namespace GitHubExplorer.BusinessLayer.Tests.GitHubService
                 .Verifiable();
 
             _ivcsService.GetRepositories("http://something");
+            _mockWebClient.Verify(x => x.DownloadString(It.IsAny<string>()), Times.Once);
+            _mockConverter.Verify(x=>x.DeserializeObject<List<GitHubRepository>>(It.IsAny<string>()), Times.Once);
 
             _mockConverter.Verify();
         }
