@@ -2,3 +2,6 @@ packages/
 .vs/
 bin
 debug
+bower_components/
+node_modules/
+app/
