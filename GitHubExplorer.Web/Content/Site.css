@@ -22,3 +22,7 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.bar-color {
+	background:red;
+}

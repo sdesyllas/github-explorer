@@ -12,7 +12,7 @@
                 @Html.TextBoxFor(x => x.UserName)      
             </div>
             <span class="form-group">
-                <button class="btn btn-default">Search!</button>
+                <button class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>
             </span>
             <div>
                 @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
