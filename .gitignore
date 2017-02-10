@@ -1,6 +1,7 @@
 packages/
 .vs/
 bin
+obj/
 debug
 bower_components/
 node_modules/
