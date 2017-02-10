@@ -1,7 +1,7 @@
 /// <binding BeforeBuild='clean' AfterBuild='default' />
 var gulp = require('gulp');
 
-var plugins = require("gulp-load-npm -g install npm")({
+var plugins = require("gulp-load-plugins")({
  pattern: ['gulp-*', 'gulp.*', 'main-bower-files', 'del'],
  replaceString: /\bgulp[\-.]/
 });
