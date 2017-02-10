@@ -10,7 +10,7 @@ var del = require('del');
 var flatten = require('gulp-flatten');
 
 gulp.task('clean', function () {
-   return del(['app/all.min.js', 'app/all.min.css', 'fonts/*']);
+   return del(['dist/*', 'fonts/*']);
 });
 
 gulp.task('min:js', function () {
@@ -20,7 +20,7 @@ gulp.task('min:js', function () {
     gulp.src(bowerJsFiles)
         .pipe(uglify())
         .pipe(concat('all.min.js'))
-        .pipe(gulp.dest('app/'));
+        .pipe(gulp.dest('dist/'));
 });
 
 gulp.task('min:css', function () {
@@ -37,11 +37,7 @@ gulp.task('min:css', function () {
         }).concat(cssFiles))
         .pipe(concat('all.min.css'))
         .pipe(cleanCSS())
-        .pipe(gulp.dest('app/'));
-});
-
-gulp.task('watch', function () {
-    return gulp.watch(mainBowerFiles, ['min:js', 'min:css']);
+        .pipe(gulp.dest('dist/'));
 });
 
 gulp.task('fonts', function () {
@@ -50,6 +46,9 @@ gulp.task('fonts', function () {
     .pipe(gulp.dest('fonts/'));
 });
 
+gulp.task('watch', function () {
+    return gulp.watch(mainBowerFiles, ['min:js', 'min:css', 'fonts']);
+});
 
 //Set a default tasks
 gulp.task('default', ['clean', 'min:js', 'min:css', 'fonts'], function () { });
