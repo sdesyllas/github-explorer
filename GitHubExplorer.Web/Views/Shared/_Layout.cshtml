@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
-    <link rel="stylesheet" type="text/css" href="/app/all.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/dist/all.min.css"/>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -26,8 +26,8 @@
             <p>&copy; @DateTime.Now.Year - Spyros Desyllas, ver.@ViewContext.Controller.GetType().Assembly.GetName().Version.ToString(3)</p>
         </footer>
     </div>
-
-    <script src="/app/all.min.js"></script>
+    
+    <script src="/dist/all.min.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
