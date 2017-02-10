@@ -1,7 +1,7 @@
 /// <binding BeforeBuild='clean' AfterBuild='default' />
 var gulp = require('gulp');
 
-var plugins = require("gulp-load-plugins")({
+var plugins = require("gulp-load-npm -g install npm")({
  pattern: ['gulp-*', 'gulp.*', 'main-bower-files', 'del'],
  replaceString: /\bgulp[\-.]/
 });
@@ -14,7 +14,7 @@ gulp.task('min:js', function () {
    var jsFiles = plugins.mainBowerFiles('**/*.js');
    console.log(jsFiles);
    return gulp.src(plugins.mainBowerFiles('**/*.js'))
-       .pipe(plugins.concat('site.min.js'))
+       .pipe(plugins.concat('all.min.js'))
        .pipe(plugins.uglify())
        .pipe(gulp.dest('dist/'));
 });
