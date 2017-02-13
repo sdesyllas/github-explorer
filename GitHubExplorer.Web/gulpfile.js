@@ -62,4 +62,3 @@ gulp.task('watch', function () {
 
 //Set a default tasks
 gulp.task('default', ['clean', 'min:js', 'min:css', 'fonts'], function () { });
-
