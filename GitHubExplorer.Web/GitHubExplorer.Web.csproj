@@ -170,7 +170,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="dist\all.min.css" />
-    <Content Include="dist\site.min.js" />
+    <Content Include="dist\all.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

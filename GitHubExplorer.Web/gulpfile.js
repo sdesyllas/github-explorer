@@ -10,36 +10,50 @@ gulp.task('clean', function () {
    return plugins.del(['dist/*', 'fonts/*']);
 });
 
+var config = {
+    distFolder : 'dist/', 
+    minjs:{
+        jsBowerFiles : '**/*.js',
+        jsConcatFile : 'all.min.js'
+    },
+    minCss:{
+        bowerCssFiles : '**/*.css',
+        bootstrapOverrideCssPath : 'dist/css/bootstrap.css',
+        cssConcatFile : 'all.min.css',
+    },
+    fonts:{
+        fontFiles : 'bower_components/**/*.{eot,svg,ttf,woff,woff2}',
+        fontsFolder : 'fonts/'
+    }
+}
+
 gulp.task('min:js', function () {    
-   var jsFiles = plugins.mainBowerFiles('**/*.js');
-   console.log(jsFiles);
-   return gulp.src(plugins.mainBowerFiles('**/*.js'))
-       .pipe(plugins.concat('all.min.js'))
+   return gulp.src(plugins.mainBowerFiles(config.minjs.jsBowerFiles))
+       .pipe(plugins.concat(config.minjs.jsConcatFile))
        .pipe(plugins.uglify())
-       .pipe(gulp.dest('dist/'));
+       .pipe(gulp.dest(config.distFolder));
 });
 
 gulp.task('min:css', function () {
-    console.log('min:css running');
     var cssFiles = ['Content/*'];
-    gulp.src(plugins.mainBowerFiles('**/*.css', {
+    gulp.src(plugins.mainBowerFiles(config.minCss.bowerCssFiles, {
             overrides: {
                 bootstrap: {
                     main: [
-                        'dist/css/bootstrap.css',
+                        config.minCss.bootstrapOverrideCssPath,
                     ]
                 }
             }
         }).concat(cssFiles))
-        .pipe(plugins.concat('all.min.css'))
+        .pipe(plugins.concat(config.minCss.cssConcatFile))
         .pipe(plugins.cleanCss())
-        .pipe(gulp.dest('dist/'));
+        .pipe(gulp.dest(config.distFolder));
 });
 
 gulp.task('fonts', function () {
-    gulp.src(['bower_components/**/*.{eot,svg,ttf,woff,woff2}'])
+    gulp.src(config.fonts.fontFiles)
     .pipe(plugins.flatten())
-    .pipe(gulp.dest('fonts/'));
+    .pipe(gulp.dest(config.fonts.fontsFolder));
 });
 
 gulp.task('watch', function () {
