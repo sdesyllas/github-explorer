@@ -57,9 +57,8 @@ gulp.task('fonts', function () {
 });
 
 gulp.task('watch', function () {
-    return gulp.watch(plugins.mainBowerFiles, ['min:js', 'min:css', 'fonts']);
+    return gulp.watch(plugins.mainBowerFiles(), ['min:js', 'min:css', 'fonts']);
 });
 
 //Set a default tasks
 gulp.task('default', ['clean', 'min:js', 'min:css', 'fonts'], function () { });
-
