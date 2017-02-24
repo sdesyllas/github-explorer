@@ -16,4 +16,5 @@ This project is using :
 * nBuilder
 *gulp
 
-To use:- restore nuget packages, install bower packages, install npm packages for gulp and run gulpfile to minify css/js.
+To use:
+restore nuget packages, install bower packages, install npm packages for gulp and run gulpfile to minify css/js.
