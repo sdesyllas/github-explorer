@@ -18,3 +18,5 @@ This project is using :
 
 To use:
 restore nuget packages, install bower packages, install npm packages for gulp and run gulpfile to minify css/js.
+
+For the .Net Core version of the project please check this [fork](https://github.com/theshoreditch/github-explorer)
